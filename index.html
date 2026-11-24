@@ -1,0 +1,1326 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b12">
+<title>VIE ROBLOX AI PRO</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg:#090b12;
+  --panel:#111522;
+  --panel2:#161c2b;
+  --border:#262e40;
+  --text:#f4f6ff;
+  --muted:#8993aa;
+  --purple:#8b7cff;
+  --cyan:#42d9ff;
+  --green:#43e6a0;
+  --red:#ff647c;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at 15% 0%,#392b7230,transparent 40%),
+    radial-gradient(ellipse at 90% 30%,#087caa18,transparent 40%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+button,input,textarea,select {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+.app {
+  max-width:1450px;
+  margin:auto;
+  padding:22px;
+}
+
+/* HEADER */
+
+header {
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  margin-bottom:35px;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo {
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  font-size:23px;
+  font-weight:900;
+  background:linear-gradient(135deg,#8067ff,#22b9e8);
+  box-shadow:0 0 25px #7969ff55;
+}
+
+.brand-name {
+  font-weight:900;
+  font-size:18px;
+  letter-spacing:1px;
+}
+
+.brand-name span {
+  color:var(--purple);
+}
+
+.brand-sub {
+  color:var(--muted);
+  font-size:10px;
+  margin-top:4px;
+  letter-spacing:1.5px;
+}
+
+.header-right {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.online {
+  border:1px solid #2b5949;
+  background:#17362970;
+  color:var(--green);
+  padding:9px 13px;
+  border-radius:30px;
+  font-size:11px;
+}
+
+.online i {
+  display:inline-block;
+  width:7px;
+  height:7px;
+  background:var(--green);
+  border-radius:50%;
+  margin-right:6px;
+  box-shadow:0 0 10px var(--green);
+}
+
+.icon-btn {
+  width:40px;
+  height:40px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:white;
+}
+
+/* HERO */
+
+.hero {
+  margin-bottom:28px;
+}
+
+.eyebrow {
+  color:var(--cyan);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:3px;
+  margin-bottom:14px;
+}
+
+.hero h1 {
+  font-size:clamp(34px,5vw,57px);
+  font-weight:900;
+  letter-spacing:-2px;
+  line-height:1.1;
+}
+
+.gradient {
+  background:linear-gradient(90deg,#9c86ff,#48d7f9);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p {
+  color:var(--muted);
+  margin-top:14px;
+  line-height:1.7;
+  font-size:14px;
+}
+
+/* STATS */
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:28px 0;
+}
+
+.stat {
+  background:linear-gradient(145deg,#171c2b,#101522);
+  border:1px solid var(--border);
+  padding:18px;
+  border-radius:17px;
+}
+
+.stat-label {
+  color:var(--muted);
+  font-size:11px;
+}
+
+.stat-value {
+  font-size:22px;
+  font-weight:800;
+  margin-top:9px;
+}
+
+.stat-value small {
+  color:var(--green);
+  font-size:11px;
+}
+
+/* MAIN GRID */
+
+.main-grid {
+  display:grid;
+  grid-template-columns:390px 1fr;
+  gap:18px;
+  align-items:start;
+}
+
+.left,.right {
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.card {
+  background:linear-gradient(145deg,#151a29,#101522);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px;
+  min-width:0;
+  transition:.25s;
+}
+
+.card:hover {
+  border-color:#6358a866;
+  box-shadow:0 10px 40px #0002;
+}
+
+.card-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.card-title {
+  font-size:15px;
+  font-weight:800;
+}
+
+.card-desc {
+  color:var(--muted);
+  font-size:11px;
+  margin-top:5px;
+}
+
+.tag {
+  font-size:10px;
+  color:#b5aaff;
+  background:#6654cc24;
+  border:1px solid #806bff45;
+  padding:6px 9px;
+  border-radius:20px;
+}
+
+/* INPUTS */
+
+label {
+  display:block;
+  font-size:11px;
+  color:#b6c0d5;
+  font-weight:700;
+  margin-bottom:9px;
+}
+
+.field {
+  margin-bottom:17px;
+}
+
+input,select,textarea {
+  width:100%;
+  background:#0b0f19;
+  color:white;
+  border:1px solid #2a3348;
+  border-radius:11px;
+  padding:13px;
+  outline:none;
+  transition:.2s;
+  font-size:12px;
+}
+
+input:focus,select:focus,textarea:focus {
+  border-color:var(--purple);
+  box-shadow:0 0 0 3px #8b7cff18;
+}
+
+select option {
+  background:#111522;
+}
+
+textarea {
+  resize:vertical;
+  min-height:140px;
+  line-height:1.7;
+}
+
+.input-wrap {
+  position:relative;
+}
+
+.input-wrap input {
+  padding-right:47px;
+}
+
+.eye {
+  position:absolute;
+  right:10px;
+  top:9px;
+  border:0;
+  background:none;
+  color:var(--muted);
+  padding:5px;
+}
+
+/* BUTTONS */
+
+.btn {
+  border:0;
+  border-radius:11px;
+  padding:13px 16px;
+  font-size:12px;
+  font-weight:800;
+  transition:.2s;
+}
+
+.btn:hover {
+  transform:translateY(-2px);
+  filter:brightness(1.12);
+}
+
+.btn:disabled {
+  opacity:.5;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.primary {
+  width:100%;
+  background:linear-gradient(100deg,#7964f5,#4c9bfa);
+  color:white;
+  box-shadow:0 5px 22px #7059f544;
+}
+
+.secondary {
+  background:#20283a;
+  color:#dce4f5;
+  border:1px solid var(--border);
+}
+
+.success {
+  background:#163d31;
+  color:#6af0b3;
+  border:1px solid #246b50;
+}
+
+.button-row {
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.button-row .btn {
+  flex:1;
+}
+
+.small-note {
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.7;
+  margin-top:12px;
+}
+
+/* CODE EDITOR */
+
+.editor {
+  background:#090d16;
+  border:1px solid #293249;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.editor-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 15px;
+  background:#131a28;
+  border-bottom:1px solid #293249;
+}
+
+.dots {
+  display:flex;
+  gap:6px;
+}
+
+.dots span {
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#ff6375;
+}
+
+.dots span:nth-child(2) {
+  background:#f9c65a;
+}
+
+.dots span:nth-child(3) {
+  background:#43d99c;
+}
+
+.editor-name {
+  color:#9aa7c0;
+  font-size:10px;
+}
+
+#codeOutput {
+  width:100%;
+  min-height:390px;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  padding:18px;
+  color:#a9e6c6;
+  font-family:Consolas,monospace;
+  font-size:12px;
+  line-height:1.8;
+  resize:vertical;
+  outline:none;
+  white-space:pre;
+  overflow:auto;
+}
+
+.editor-footer {
+  padding:10px 15px;
+  border-top:1px solid #293249;
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:10px;
+}
+
+/* STATUS */
+
+.status-box {
+  background:#0b101a;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px;
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.7;
+  overflow-wrap:anywhere;
+}
+
+.status-line {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.status-line:last-child {
+  margin-bottom:0;
+}
+
+.status-value {
+  color:var(--green);
+}
+
+/* HISTORY */
+
+.history-list {
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.history-item {
+  background:#0d1220;
+  border:1px solid #252d40;
+  border-radius:11px;
+  padding:12px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.history-item:hover {
+  border-color:var(--purple);
+}
+
+.history-item strong {
+  display:block;
+  font-size:11px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.history-item span {
+  color:var(--muted);
+  font-size:9px;
+  display:block;
+  margin-top:6px;
+}
+
+.empty {
+  color:var(--muted);
+  font-size:11px;
+  text-align:center;
+  padding:20px 5px;
+}
+
+/* FOOTER */
+
+footer {
+  margin-top:40px;
+  padding:22px 0;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.toast {
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,20px);
+  background:#1a2636;
+  border:1px solid #526b91;
+  padding:13px 20px;
+  border-radius:12px;
+  font-size:12px;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:99;
+  max-width:90%;
+  text-align:center;
+}
+
+.toast.show {
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+.glow {
+  animation:pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0%,100% {box-shadow:0 0 8px #8b7cff10}
+  50% {box-shadow:0 0 24px #8b7cff25}
+}
+
+@media(max-width:900px) {
+  .main-grid {
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px) {
+  .app {padding:14px}
+  header {margin-bottom:28px}
+  .brand-name {font-size:15px}
+  .online {font-size:9px;padding:8px}
+  .hero h1 {letter-spacing:-1px}
+  .stats {grid-template-columns:repeat(2,1fr);gap:9px}
+  .stat {padding:13px}
+  .stat-value {font-size:18px}
+  .card {padding:17px}
+  #codeOutput {min-height:320px;font-size:11px}
+  footer {flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+  <div class="brand">
+    <div class="logo">V</div>
+    <div>
+      <div class="brand-name">VIE <span>ROBLOX AI</span></div>
+      <div class="brand-sub">SCRIPT GENERATOR PRO</div>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <div class="online"><i></i> SYSTEM ONLINE</div>
+    <button class="icon-btn" id="clearAll" title="Xóa dữ liệu">⌫</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">✦ AI POWERED DEVELOPMENT</div>
+  <h1>CREATE YOUR<br><span class="gradient">ROBLOX WORLD.</span></h1>
+  <p>
+    Trợ lý AI chuyên hỗ trợ lập trình Roblox Luau.
+    Mô tả ý tưởng, tạo mã nguồn và quản lý các bản script.
+  </p>
+</section>
+
+<section class="stats">
+
+  <div class="stat">
+    <div class="stat-label">AI ENGINE</div>
+    <div class="stat-value">2 <small>PROVIDERS</small></div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-label">SCRIPT LANGUAGE</div>
+    <div class="stat-value">Luau</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-label">GENERATED</div>
+    <div class="stat-value" id="totalCount">0</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-label">CONNECTION</div>
+    <div class="stat-value" id="connection">OFFLINE</div>
+  </div>
+
+</section>
+
+<main class="main-grid">
+
+<div class="left">
+
+  <!-- AI SETTINGS -->
+
+  <section class="card glow">
+
+    <div class="card-head">
+      <div>
+        <div class="card-title">⚙ AI Configuration</div>
+        <div class="card-desc">Cấu hình AI Generator</div>
+      </div>
+      <span class="tag">SETTINGS</span>
+    </div>
+
+    <div class="field">
+      <label>AI PROVIDER</label>
+      <select id="provider">
+        <option value="openai">OpenAI</option>
+        <option value="gemini">Google Gemini</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>AI API KEY</label>
+      <div class="input-wrap">
+        <input id="apiKey" type="password"
+          placeholder="Nhập API Key nếu Backend yêu cầu">
+        <button class="eye" id="toggleEye">◉</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>BACKEND API URL</label>
+      <input id="backend"
+        value="http://localhost:3000"
+        placeholder="https://your-backend.com">
+    </div>
+
+    <p class="small-note">
+      API Key chỉ được gửi đến Backend qua HTTPS.
+      Không lưu khóa vào LocalStorage.
+      Backend cần triển khai endpoint /api/generate-luau.
+    </p>
+
+  </section>
+
+  <!-- CHAT -->
+
+  <section class="card">
+
+    <div class="card-head">
+      <div>
+        <div class="card-title">✦ AI Chat Generator</div>
+        <div class="card-desc">Mô tả chức năng bạn muốn tạo</div>
+      </div>
+      <span class="tag">PROMPT</span>
+    </div>
+
+    <div class="field">
+      <label>LOẠI SCRIPT</label>
+      <select id="scriptType">
+        <option value="Server Script">Server Script</option>
+        <option value="LocalScript">LocalScript</option>
+        <option value="ModuleScript">ModuleScript</option>
+        <option value="Roblox Studio System">Full System</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>YÊU CẦU CỦA BẠN</label>
+      <textarea id="prompt"
+        placeholder="Ví dụ: Viết hệ thống tạo hiệu ứng mưa cho tất cả người chơi trong game, có thể bật và tắt bằng RemoteEvent..."></textarea>
+    </div>
+
+    <button class="btn primary" id="generate">
+      ⚡ TẠO SCRIPT BẰNG AI
+    </button>
+
+    <div class="button-row">
+      <button class="btn secondary" id="example">
+        ✦ Ví dụ
+      </button>
+      <button class="btn secondary" id="clearPrompt">
+        Xóa nội dung
+      </button>
+    </div>
+
+  </section>
+
+  <!-- HISTORY -->
+
+  <section class="card">
+
+    <div class="card-head">
+      <div>
+        <div class="card-title">◷ History</div>
+        <div class="card-desc">Các script đã tạo trong phiên</div>
+      </div>
+      <span class="tag">LOCAL</span>
+    </div>
+
+    <div class="history-list" id="history">
+      <div class="empty">Chưa có lịch sử.</div>
+    </div>
+
+  </section>
+
+</div>
+
+<div class="right">
+
+  <!-- CODE EDITOR -->
+
+  <section class="card">
+
+    <div class="card-head">
+      <div>
+        <div class="card-title">⌘ Code Editor</div>
+        <div class="card-desc">Mã nguồn Luau do AI tạo</div>
+      </div>
+      <span class="tag">LUAU</span>
+    </div>
+
+    <div class="editor">
+
+      <div class="editor-top">
+        <div class="dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="editor-name" id="fileName">
+          Untitled.server.lua
+        </div>
+        <div class="editor-name">Luau</div>
+      </div>
+
+      <textarea id="codeOutput"
+        spellcheck="false"
+        placeholder="-- Mã nguồn Luau sẽ xuất hiện tại đây..."></textarea>
+
+      <div class="editor-footer">
+        <span id="lineCount">0 LINES</span>
+        <span>UTF-8 · LUAU</span>
+      </div>
+
+    </div>
+
+    <div class="button-row">
+      <button class="btn secondary" id="copyCode">
+        ◫ Sao chép
+      </button>
+
+      <button class="btn secondary" id="download">
+        ↓ Tải .lua
+      </button>
+    </div>
+
+  </section>
+
+  <!-- EXECUTION -->
+
+  <section class="card">
+
+    <div class="card-head">
+      <div>
+        <div class="card-title">🚀 Roblox Bridge</div>
+        <div class="card-desc">Kết nối với hệ thống Roblox</div>
+      </div>
+      <span class="tag">BACKEND</span>
+    </div>
+
+    <div class="status-box">
+
+      <div class="status-line">
+        <span>Backend</span>
+        <span class="status-value" id="backendStatus">Chưa kiểm tra</span>
+      </div>
+
+      <div class="status-line">
+        <span>AI Provider</span>
+        <span id="providerStatus">OpenAI</span>
+      </div>
+
+      <div class="status-line">
+        <span>Generated Script</span>
+        <span id="scriptStatus">Waiting</span>
+      </div>
+
+      <div class="status-line">
+        <span>Roblox Bridge</span>
+        <span>Qua Backend</span>
+      </div>
+
+    </div>
+
+    <div class="button-row">
+      <button class="btn secondary" id="testConnection">
+        Kiểm tra Backend
+      </button>
+      <button class="btn success" id="publish">
+        Gửi lệnh an toàn
+      </button>
+    </div>
+
+    <p class="small-note">
+      Chỉ các lệnh JSON thuộc danh sách cho phép mới được gửi
+      đến Roblox. Mã Luau trong trình soạn thảo cần được
+      kiểm tra và đưa vào Roblox Studio trước khi chạy.
+    </p>
+
+  </section>
+
+  <!-- SYSTEM PROMPT -->
+
+  <section class="card">
+
+    <div class="card-head">
+      <div>
+        <div class="card-title">🧠 AI System Prompt</div>
+        <div class="card-desc">Quy tắc dành cho AI</div>
+      </div>
+      <span class="tag">AI RULES</span>
+    </div>
+
+    <div class="status-box">
+      You are a professional Roblox Luau developer.
+
+      <br><br>
+
+      - Generate clean Luau code.
+      <br>
+      - No Markdown code fences.
+      <br>
+      - Use Roblox Studio APIs.
+      <br>
+      - Use correct Server/Client architecture.
+      <br>
+      - Validate RemoteEvent inputs.
+      <br>
+      - Never execute arbitrary remote code.
+      <br>
+      - Include comments and error handling.
+      <br>
+      - Return code only.
+    </div>
+
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <span>© 2026 VIE ROBLOX AI PRO</span>
+  <span>POWERED BY AI · BUILT FOR ROBLOX STUDIO</span>
+</footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* =================================
+   VIE ROBLOX AI - APPLICATION
+================================= */
+
+const $ = id => document.getElementById(id);
+
+let historyData = [];
+let currentCode = "";
+let currentCommand = null;
+let generatedCount = 0;
+
+/* TOAST */
+
+function toast(message) {
+  const el = $("toast");
+  el.textContent = message;
+  el.classList.add("show");
+
+  setTimeout(() => {
+    el.classList.remove("show");
+  }, 2600);
+}
+
+/* PROVIDER */
+
+$("provider").addEventListener("change", () => {
+  $("providerStatus").textContent =
+    $("provider").value === "openai"
+      ? "OpenAI"
+      : "Gemini";
+});
+
+/* SHOW KEY */
+
+$("toggleEye").onclick = () => {
+  const input = $("apiKey");
+
+  input.type =
+    input.type === "password"
+      ? "text"
+      : "password";
+};
+
+/* SYSTEM PROMPT */
+
+const SYSTEM_PROMPT = `
+You are VIE ROBLOX AI, an expert Roblox Luau developer.
+
+Task:
+Generate Roblox Studio Luau source code based on the user's request.
+
+Rules:
+1. Return plain Luau code only.
+2. Never use Markdown code fences.
+3. Use valid Roblox services and APIs.
+4. Choose the correct Script type.
+5. Separate Server and Client responsibilities.
+6. Validate all RemoteEvent inputs.
+7. Avoid arbitrary code execution.
+8. Do not use loadstring for remote execution.
+9. Include comments.
+10. Handle errors safely.
+11. Do not claim code was tested if it was not.
+12. Never generate code intended to steal accounts,
+   credentials or personal information.
+`;
+
+/* GENERATE */
+
+$("generate").addEventListener("click", generateScript);
+
+async function generateScript() {
+
+  const prompt = $("prompt").value.trim();
+  const endpoint = $("backend").value.trim().replace(/\/+$/, "");
+  const provider = $("provider").value;
+  const apiKey = $("apiKey").value.trim();
+  const scriptType = $("scriptType").value;
+
+  if (!prompt) {
+    toast("Hãy nhập yêu cầu của bạn!");
+    return;
+  }
+
+  if (!endpoint) {
+    toast("Hãy nhập Backend URL!");
+    return;
+  }
+
+  const button = $("generate");
+
+  button.disabled = true;
+  button.textContent = "◌ AI ĐANG TẠO SCRIPT...";
+
+  $("scriptStatus").textContent = "Generating...";
+  $("backendStatus").textContent = "Connecting...";
+
+  try {
+
+    const response = await fetch(
+      endpoint + "/api/generate-luau",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          provider,
+          apiKey,
+          prompt,
+          scriptType,
+          systemPrompt: SYSTEM_PROMPT
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.error || "AI generation failed"
+      );
+    }
+
+    if (typeof data.code !== "string" || !data.code.trim()) {
+      throw new Error("Backend không trả về code Luau.");
+    }
+
+    currentCode = data.code.trim();
+    currentCommand = data.command || null;
+
+    $("codeOutput").value = currentCode;
+
+    $("scriptStatus").textContent = "Generated";
+    $("backendStatus").textContent = "Connected";
+
+    $("fileName").textContent =
+      scriptType.replaceAll(" ", "_") + ".lua";
+
+    updateLineCount();
+
+    generatedCount++;
+
+    $("totalCount").textContent = generatedCount;
+
+    addHistory(prompt, currentCode, currentCommand);
+
+    toast("Tạo script thành công!");
+
+  } catch (error) {
+
+    $("scriptStatus").textContent = "Error";
+
+    $("backendStatus").textContent = "Disconnected";
+
+    toast(error.message);
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent = "⚡ TẠO SCRIPT BẰNG AI";
+
+  }
+}
+
+/* HISTORY */
+
+function addHistory(prompt, code, command) {
+
+  const item = {
+    prompt,
+    code,
+    command,
+    time: new Date().toLocaleTimeString("vi-VN")
+  };
+
+  historyData.unshift(item);
+  historyData = historyData.slice(0, 20);
+
+  renderHistory();
+}
+
+function renderHistory() {
+
+  const box = $("history");
+
+  box.innerHTML = "";
+
+  if (!historyData.length) {
+    box.innerHTML =
+      '<div class="empty">Chưa có lịch sử.</div>';
+    return;
+  }
+
+  historyData.forEach((item, index) => {
+
+    const element = document.createElement("div");
+    element.className = "history-item";
+
+    const title = document.createElement("strong");
+    title.textContent = item.prompt;
+
+    const time = document.createElement("span");
+    time.textContent = item.time;
+
+    element.append(title, time);
+
+    element.addEventListener("click", () => {
+
+      currentCode = item.code;
+      currentCommand = item.command;
+
+      $("codeOutput").value = item.code;
+      updateLineCount();
+
+      toast("Đã mở script #" + (index + 1));
+
+    });
+
+    box.appendChild(element);
+
+  });
+}
+
+/* LINE COUNT */
+
+function updateLineCount() {
+
+  const code = $("codeOutput").value;
+
+  const lines = code
+    ? code.split("\n").length
+    : 0;
+
+  $("lineCount").textContent = lines + " LINES";
+}
+
+$("codeOutput").addEventListener(
+  "input",
+  updateLineCount
+);
+
+/* COPY */
+
+$("copyCode").onclick = async () => {
+
+  const code = $("codeOutput").value;
+
+  if (!code) {
+    toast("Chưa có code!");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(code);
+    toast("Đã sao chép code!");
+  } catch {
+    $("codeOutput").select();
+    document.execCommand("copy");
+    toast("Đã sao chép!");
+  }
+
+};
+
+/* DOWNLOAD */
+
+$("download").onclick = () => {
+
+  const code = $("codeOutput").value;
+
+  if (!code) {
+    toast("Không có code để tải!");
+    return;
+  }
+
+  const blob = new Blob(
+    [code],
+    { type: "text/plain;charset=utf-8" }
+  );
+
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "VIE_ROBLOX_SCRIPT.lua";
+
+  link.click();
+
+  URL.revokeObjectURL(url);
+
+  toast("Đã tải file Lua!");
+};
+
+/* TEST BACKEND */
+
+$("testConnection").onclick = async () => {
+
+  const endpoint =
+    $("backend").value.trim().replace(/\/+$/, "");
+
+  try {
+
+    const response = await fetch(endpoint + "/", {
+      method: "GET"
+    });
+
+    if (!response.ok) {
+      throw new Error("Backend error");
+    }
+
+    $("connection").textContent = "ONLINE";
+    $("connection").style.color = "#43e6a0";
+    $("backendStatus").textContent = "Connected";
+
+    toast("Backend đang hoạt động!");
+
+  } catch {
+
+    $("connection").textContent = "OFFLINE";
+    $("connection").style.color = "#ff647c";
+    $("backendStatus").textContent = "Disconnected";
+
+    toast("Không kết nối được Backend!");
+
+  }
+};
+
+/* EXAMPLE */
+
+$("example").onclick = () => {
+
+  $("prompt").value =
+    "Viết một hệ thống thông báo cho tất cả người chơi trong Roblox. Server sử dụng RemoteEvent, Client hiển thị thông báo đẹp trên màn hình. Hỗ trợ điện thoại.";
+
+  toast("Đã thêm ví dụ!");
+};
+
+/* CLEAR PROMPT */
+
+$("clearPrompt").onclick = () => {
+  $("prompt").value = "";
+};
+
+/* PUBLISH */
+
+$("publish").onclick = async () => {
+
+  if (!currentCommand) {
+    toast("Chưa có lệnh JSON an toàn để gửi!");
+    return;
+  }
+
+  const endpoint =
+    $("backend").value.trim().replace(/\/+$/, "");
+
+  try {
+
+    const response = await fetch(
+      endpoint + "/api/publish",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          command: currentCommand
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Publish failed");
+    }
+
+    toast("Đã gửi lệnh đến Backend!");
+
+  } catch (error) {
+
+    toast(error.message);
+
+  }
+};
+
+/* CLEAR ALL */
+
+$("clearAll").onclick = () => {
+
+  if (!confirm("Bạn muốn xóa dữ liệu phiên hiện tại?")) {
+    return;
+  }
+
+  $("prompt").value = "";
+  $("codeOutput").value = "";
+
+  currentCode = "";
+  currentCommand = null;
+  historyData = [];
+  generatedCount = 0;
+
+  $("totalCount").textContent = "0";
+  $("scriptStatus").textContent = "Waiting";
+
+  updateLineCount();
+  renderHistory();
+
+  toast("Đã xóa dữ liệu phiên!");
+
+};
+
+/* INITIALIZE */
+
+updateLineCount();
+renderHistory();
+
+console.log("VIE ROBLOX AI PRO READY");
+
+</script>
+
+</body>
+</html>
